@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Bar, BarChart, Tooltip, XAxis, YAxis } from 'recharts';
 
 function App() {
 
@@ -18,16 +19,21 @@ function App() {
         }
         return info;
       }
-     
-    
-      
       );
-      console.log(phoneData)
+      setPhones(phoneData)
+      
     })
   },[])
   console.log(phones)
   return (
     <div className="App">
+      <BarChart width={1000} height={200} data={phones}>
+          <Bar dataKey="value" fill="#8884d8" />
+          <Tooltip></Tooltip>
+          <XAxis dataKey="name"></XAxis>
+          <YAxis dataKey="value"></YAxis>
+        </BarChart>
+      
       
     </div>
   );
